@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Moychbek | Official Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #fcfaf9;
+            --accent: #d4a5a5; /* Rose Gold */
+            --text-dark: #2d2d2d;
+            --glass: rgba(255, 255, 255, 0.6);
+            --border: rgba(255, 255, 255, 0.8);
+            --shadow: 0 20px 40px rgba(212, 165, 165, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Murakkab Fon Animatsiyasi */
+        .bg-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 { width: 500px; height: 500px; background: #fae1e1; top: -10%; left: -10%; }
+        .orb-2 { width: 400px; height: 400px; background: #f0e5d8; bottom: -10%; right: -5%; animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 80px) scale(1.15); }
+        }
+
+        .main-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 25px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* 3 Bosqichli Kirish Animatsiyasi */
+        .fade-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(15px);
+            animation: revealUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes revealUp {
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .profile-section { animation-delay: 0.2s; }
+        .title-section { animation-delay: 0.4s; }
+        .links-section { animation-delay: 0.6s; }
+        .footer-section { animation-delay: 0.9s; }
+
+        /* Profil Rasmi */
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            position: relative;
+            padding: 5px;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+
+        .name {
+            font-family: 'Syne', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 5px;
+        }
+
+        .bio {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 45px;
+        }
+
+        /* Link Tugmalari */
+        .links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .link-card:active {
+            transform: scale(0.96);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .link-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(212, 165, 165, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .link-card i {
+            font-size: 22px;
+            width: 40px;
+            color: var(--text-dark);
+        }
+
+        .link-label {
+            flex-grow: 1;
+            text-align: left;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .chevron {
+            font-size: 10px;
+            opacity: 0.3;
+        }
+
+        /* Shohjahon Mahkamov Footer */
+        footer {
+            margin-top: 60px;
+        }
+
+        .author-link {
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .author-label {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .author-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .author-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .author-link:hover .author-name::after {
+            width: 100%;
+        }
+
+        .author-link:hover .author-name {
+            color: var(--accent);
+        }
+
+        @media (max-width: 400px) {
+            .name { font-size: 32px; }
+            .main-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-layer">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="main-card">
+        <div class="profile-section fade-reveal">
+            <div class="avatar-container">
+                <img src="IMG_20260317_103414_046.jpg" alt="Moychbek">
+            </div>
+        </div>
+
+        <header class="title-section fade-reveal">
+            <h1 class="name">Moychbek</h1>
+            <p class="bio">Lifestyle & Beauty</p>
+        </header>
+
+        <div class="links-section fade-reveal">
+            <div class="links-stack">
+                <a href="https://www.instagram.com/mochybek?igsh=OThjb2d0eGV5NXh1" class="link-card" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span class="link-label">Instagram Portfolio</span>
+                    <i class="fas fa-chevron-right chevron"></i>
+                </a>
+
+                <a href="https://t.me/mochyxon" class="link-card" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span class="link-label">Telegram Channel</span>
+                    <i class="fas fa-chevron-right chevron"></i>
+                </a>
+
+                <a href="https://t.me/mochy_ads" class="link-card" target="_blank">
+                    <i class="far fa-heart"></i>
+                    <span class="link-label">Hamkorlik (Ads)</span>
+                    <i class="fas fa-chevron-right chevron"></i>
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer-section fade-reveal">
+            <a href="https://www.instagram.com/shohcore12" class="author-link" target="_blank">
+                <span class="author-label">designed by</span>
+                <span class="author-name">Shohjahon Mahkamov</span>
+            </a>
+        </footer>
+    </div>
+
+</body>
+  </html>
+  
